@@ -4,7 +4,7 @@ import torch
 from accelerate import Accelerator
 
 from run.neighbor_tune import nn_train
-from utils import timmer, basedir, set_seed
+from utils import timmer, set_seed
 from run.evaluate import evaluate
 from run.normal_tune import train
 from model.retriever import Retriever
@@ -12,6 +12,7 @@ from model.retriever import Retriever
 
 def get_args():
     parser = argparse.ArgumentParser(description='Semantic Code Search')
+    parser.add_argument('--basedir', default="./", type=str)
     parser.add_argument('--task', default='tune', type=str, help='eval, tune, nncl, keeptune')
     parser.add_argument('--lang', default='python', type=str, help='java, python, ruby, go, javascript, php')
 
@@ -49,12 +50,12 @@ def get_args():
 
     args = parser.parse_args()
 
-    args.encoder_save_path = basedir + args.encoder_save_path if args.encoder_save_path else None
-    args.encoder_load_path = basedir + args.encoder_load_path if args.encoder_load_path else None
-    args.valid_query_path = basedir + f'/dataset/csn/{args.lang}/valid.jsonl'
-    args.test_query_path = basedir + f'/dataset/csn/{args.lang}/test.jsonl'
-    args.codebase_path = basedir + f'/dataset/csn/{args.lang}/codebase.jsonl'
-    args.tune_path = basedir + f'/dataset/csn/{args.lang}/train.jsonl'
+    args.encoder_save_path = args.basedir + args.encoder_save_path if args.encoder_save_path else None
+    args.encoder_load_path = args.basedir + args.encoder_load_path if args.encoder_load_path else None
+    args.valid_query_path = args.basedir + f'/dataset/csn/{args.lang}/valid.jsonl'
+    args.test_query_path = args.basedir + f'/dataset/csn/{args.lang}/test.jsonl'
+    args.codebase_path = args.basedir + f'/dataset/csn/{args.lang}/codebase.jsonl'
+    args.tune_path = args.basedir + f'/dataset/csn/{args.lang}/train.jsonl'
 
     return args
 
