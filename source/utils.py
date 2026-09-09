@@ -6,7 +6,7 @@ import numpy as np
 from string import Formatter
 from datetime import datetime, timedelta
 
-basedir = 'project root dir'
+basedir = './'
 
 def timmer(fn):
     def wrapper(*args, **kwargs):
