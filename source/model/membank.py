@@ -10,7 +10,7 @@ class MemoryBank(nn.Module):
         if is_index:
             self.register_buffer('bank', torch.arange(self.size)[torch.randperm(self.size)].view(-1, size))
         else:
-            self.register_buffer('bank', torch.randn(768, size).half())  # xxx
+            self.register_buffer('bank', torch.randn(768, size))
         self.register_buffer('bank_ptr', torch.LongTensor([0]))
 
     @torch.no_grad()
