@@ -32,7 +32,7 @@ def evaluate(model, args, pack, accelerator):
     # get nl vector
     nl_vecs = []
     for batch in tqdm(query_dataloader, desc='eval_nl_vec',
-                      disable=not accelerator.is_local_main_process):
+                      disable=not accelerator.is_local_main_process, leave=False, mininterval=60):
         nl_inputs = batch
         with torch.no_grad():
             nl_vec, _ = model(nl_inputs=nl_inputs, code_inputs=None)
@@ -43,7 +43,7 @@ def evaluate(model, args, pack, accelerator):
     # get code vector
     code_vecs = []
     for batch in tqdm(code_dataloader, desc='eval_code_vec',
-                      disable=not accelerator.is_local_main_process):
+                      disable=not accelerator.is_local_main_process, leave=False, mininterval=60):
         if args.encoder_name == 'graphcodebert':
             code_inputs = batch[0:]
         else:

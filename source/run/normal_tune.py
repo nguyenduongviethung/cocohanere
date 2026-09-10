@@ -35,9 +35,9 @@ def train(model, pack, args, accelerator):
     model.train()
 
     tr_num, tr_loss, best_mrr = 0, 0., 0.
-    for epoch in tqdm(range(args.tune_epoch), total=args.tune_epoch, disable=not accelerator.is_local_main_process):
+    for epoch in range(args.tune_epoch):
         for step, batch in tqdm(enumerate(dataloader), total=len(dataloader),
-                                disable=not accelerator.is_local_main_process):
+                                disable=not accelerator.is_local_main_process, desc=f"Epoch {epoch + 1}", leave=False, mininterval=60):
             # compute loss
             nl_inputs, code_inputs = batch[1], batch[2:]
             nl_vec, code_vec = model(nl_inputs=nl_inputs, code_inputs=code_inputs)
