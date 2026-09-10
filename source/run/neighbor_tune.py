@@ -33,11 +33,11 @@ def nn_train(model, pack, args, accelerator):
     code_bank = VecIndexBank(size=args.nn_size, K=args.nn_k).to(accelerator.device)
 
     tr_num, tr_loss, best_mrr = 0, 0., 0.
-    for epoch in tqdm(range(args.tune_epoch), total=args.tune_epoch, disable=not accelerator.is_local_main_process):
+    for epoch in range(args.tune_epoch):
         model.zero_grad()
         model.train()
         for step, batch in tqdm(enumerate(dataloader), total=len(dataloader),
-                                disable=not accelerator.is_local_main_process):
+                                disable=not accelerator.is_local_main_process, desc=f"Epoch {epoch + 1}", leave=False, mininterval=60):
             indexs, nl_inputs, code_inputs = batch[0], batch[1], batch[2:]
             loss = model(
                 nl_inputs=nl_inputs,
