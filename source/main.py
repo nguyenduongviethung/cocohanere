@@ -51,10 +51,10 @@ def get_args():
 
     args.encoder_save_path = basedir + args.encoder_save_path if args.encoder_save_path else None
     args.encoder_load_path = basedir + args.encoder_load_path if args.encoder_load_path else None
-    args.valid_query_path = basedir + f'/dataset/csn/{args.lang}/valid.jsonl'
-    args.test_query_path = basedir + f'/dataset/csn/{args.lang}/test.jsonl'
-    args.codebase_path = basedir + f'/dataset/csn/{args.lang}/codebase.jsonl'
-    args.tune_path = basedir + f'/dataset/csn/{args.lang}/train.jsonl'
+    args.valid_query_path = basedir + f'/dataset/{args.lang}/valid.jsonl'
+    args.test_query_path = basedir + f'/dataset/{args.lang}/test.jsonl'
+    args.codebase_path = basedir + f'/dataset/{args.lang}/codebase.jsonl'
+    args.tune_path = basedir + f'/dataset/{args.lang}/train.jsonl'
 
     return args
 
