@@ -1,6 +1,7 @@
 import torch.nn as nn
-from model.loss import LossModule
-from utils import INPUT_MODE, to_device
+
+from source.model.loss import LossModule
+from source.utils import INPUT_MODE, to_device
 
 
 class Retriever(nn.Module):

@@ -1,12 +1,12 @@
 import os
-import torch
 from tqdm.auto import tqdm
-from utils import DATA_MODE
 from torch.optim import AdamW
-from run.evaluate import evaluate
-from model.membank import VecIndexBank
 from transformers import get_linear_schedule_with_warmup
 from torch.utils.data import DataLoader, RandomSampler
+
+from source.utils import DATA_MODE
+from source.run.evaluate import evaluate
+from source.model.membank import VecIndexBank
 
 
 def nn_train(model, pack, args, accelerator):

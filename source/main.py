@@ -1,15 +1,15 @@
 import argparse
-from model.pack import Pack, get_encoder
 import torch
 from accelerate import Accelerator
 import json
 
-from run.neighbor_tune import nn_train
-from utils import timmer, basedir, set_seed
-from run.evaluate import evaluate
-from run.normal_tune import train
-from model.retriever import Retriever
 
+from source.utils import timmer, set_seed
+from source.model.pack import Pack, get_encoder
+from source.run.neighbor_tune import nn_train
+from source.run.evaluate import evaluate
+from source.run.normal_tune import train
+from source.model.retriever import Retriever
 
 def get_args():
     parser = argparse.ArgumentParser(description='Semantic Code Search')
@@ -50,12 +50,12 @@ def get_args():
 
     args = parser.parse_args()
 
-    args.encoder_save_path = basedir + args.encoder_save_path if args.encoder_save_path else None
-    args.encoder_load_path = basedir + args.encoder_load_path if args.encoder_load_path else None
-    args.valid_query_path = basedir + f'/dataset/{args.lang}/valid.jsonl'
-    args.test_query_path = basedir + f'/dataset/{args.lang}/test.jsonl'
-    args.codebase_path = basedir + f'/dataset/{args.lang}/codebase.jsonl'
-    args.tune_path = basedir + f'/dataset/{args.lang}/train.jsonl'
+    args.encoder_save_path = args.encoder_save_path if args.encoder_save_path else None
+    args.encoder_load_path = args.encoder_load_path if args.encoder_load_path else None
+    args.valid_query_path = f'dataset/{args.lang}/valid.jsonl'
+    args.test_query_path = f'dataset/{args.lang}/test.jsonl'
+    args.codebase_path = f'dataset/{args.lang}/codebase.jsonl'
+    args.tune_path = f'dataset/{args.lang}/train.jsonl'
 
     return args
 

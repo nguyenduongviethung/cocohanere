@@ -1,8 +1,8 @@
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-from utils import LOSS_MODE
 
+from source.utils import LOSS_MODE
 
 class LossModule(nn.Module):
     def __init__(self):

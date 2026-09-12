@@ -1,11 +1,12 @@
 import os
 from transformers import get_linear_schedule_with_warmup
 from torch.utils.data import DataLoader, RandomSampler
-from utils import DATA_MODE
 from tqdm.auto import tqdm
 from torch.optim import AdamW
-from model.loss import LossModule
-from run.evaluate import evaluate
+
+from source.utils import DATA_MODE
+from source.model.loss import LossModule
+from source.run.evaluate import evaluate
 
 
 def train(model, pack, args, accelerator):

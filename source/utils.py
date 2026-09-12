@@ -6,8 +6,6 @@ import numpy as np
 from string import Formatter
 from datetime import datetime, timedelta
 
-basedir = './'
-
 def timmer(fn):
     def wrapper(*args, **kwargs):
         a = datetime.now()

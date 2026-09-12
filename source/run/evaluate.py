@@ -2,10 +2,10 @@ import gc
 import torch
 import numpy as np
 from tqdm.auto import tqdm
-from utils import DATA_MODE
 from datetime import datetime
 from torch.utils.data import DataLoader, SequentialSampler
 
+from source.utils import DATA_MODE
 
 def evaluate(model, args, pack, accelerator):
     # load dataset

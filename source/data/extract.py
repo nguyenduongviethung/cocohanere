@@ -1,9 +1,10 @@
 import random
 import numpy as np
+from tree_sitter import Language, Parser
+
 from data.parser import DFG_python, DFG_java, DFG_ruby, DFG_go, DFG_php, DFG_javascript
 from data.parser import remove_comments_and_docstrings, tree_to_token_index, index_to_code_token
-from tree_sitter import Language, Parser
-from utils import DATA_MODE, basedir
+from source.utils import DATA_MODE
 
 
 def whole_word_mask_fn(tokenizer, tokens, mask_rate):
@@ -107,7 +108,7 @@ dfg_function = {
 parsers = {}
 
 for lang in dfg_function:
-    LANGUAGE = Language(basedir + '/data/parser/my-languages.so', lang)
+    LANGUAGE = Language('data/parser/my-languages.so', lang)
     parser = Parser()
     parser.set_language(LANGUAGE)
     parser = [parser, dfg_function[lang]]

@@ -1,7 +1,7 @@
 import torch
 import torch.nn as nn
-from utils import INPUT_MODE
 
+from source.utils import INPUT_MODE
 
 class CodeBertWrapper(nn.Module):
     def __init__(self, encoder):

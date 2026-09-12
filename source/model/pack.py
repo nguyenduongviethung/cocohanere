@@ -1,10 +1,11 @@
 from transformers import RobertaTokenizer, RobertaModel, RobertaConfig
-from model.wrapper import GraphCodeBertWrapper, CodeBertWrapper
-from data.data_load import (CodeBertTrainDataset, CodeBertQueryDataset,
+
+from source.model.wrapper import GraphCodeBertWrapper, CodeBertWrapper
+from source.data.data_load import (CodeBertTrainDataset, CodeBertQueryDataset,
                            CodeBertCodeDataset, GraphCodeBertCodeDataset,
                            GraphCodeBertQueryDataset,
                            GraphCodeBertTrainDataset)
-from utils import DATA_MODE
+from source.utils import DATA_MODE
 
 
 class Pack(object):
