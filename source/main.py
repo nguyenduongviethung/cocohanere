@@ -2,6 +2,7 @@ import argparse
 from model.pack import Pack, get_encoder
 import torch
 from accelerate import Accelerator
+import json
 
 from run.neighbor_tune import nn_train
 from utils import timmer, basedir, set_seed
@@ -62,6 +63,8 @@ def get_args():
 @timmer
 def main():
     args = get_args()
+
+    print(json.dumps(vars(args), indent=4))
 
     # set_seed(123456)
 
